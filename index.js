@@ -1,12 +1,12 @@
 let express = require('express');
 let cors = require('cors');
-const { resolve } = require('path');
+// const { resolve } = require('path');
 
 const app = express();
 const port = 3000;
-app.use(cors({ origin: 'https://bd1-stocks.vercel.app/' }));
+app.use(cors());
 
-app.use(express.static('static'));
+// app.use(express.static('static'));
 
 app.get('/', (req, res) => {
   res.send('Welcome to Stock portfolio analysis API!');
