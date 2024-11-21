@@ -13,7 +13,13 @@ app.get('/', (req, res) => {
 });
 
 function calculateReturnValue(boughtAt, marketPrice, quantity) {
-  return Math.abs(boughtAt - marketPrice) * quantity;
+  if (boughtAt < marketPrice) {
+    return (marketPrice - boughtAt) * quantity;
+  } else if (boughtAt > marketPrice) {
+    return (boughtAt - marketPrice) * quantity * -1;
+  } else {
+    return 0;
+  }
 }
 app.get('/calculate-returns', (req, res) => {
   let boughtAt = parseFloat(req.query.boughtAt);
